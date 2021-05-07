@@ -23,8 +23,8 @@
         "generate": "stencil generate"
     },
     "dependencies": {
-        "@stencil/core": "^2.0.1",
-        "@rhazn/logic-ts": "0.0.1"
+        "@rhazn/logic-ts": "0.0.1",
+        "@stencil/core": "^2.0.1"
     },
     "license": "MIT",
     "devDependencies": {
