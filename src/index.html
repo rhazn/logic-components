@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/logic-components.esm.js"></script>
+    <script nomodule src="/build/logic-components.js"></script>
+    
+  </head>
+  <body>
+    <my-component first="" last=""></my-component>
+    <propositional-world syntax="syntax" interpretation="interpretation"></propositional-world>
+    <world-preference worlds="worlds"></world-preference>
+  </body>
+  <script>
+    const syntax = ["a", "b", "c"];
+    const interpretation1 = function(formula) {
+      switch (formula) {
+        case "a": return true;
+        case "b": return false;
+        case "c": return true;
+      }
+    }
+
+    const interpretation2 = function(formula) {
+      switch (formula) {
+        case "a": return false;
+        case "b": return true;
+        case "c": return true;
+      }
+    }
+
+    const interpretation3 = function(formula) {
+      switch (formula) {
+        case "a": return false;
+        case "b": return true;
+        case "c": return false;
+      }
+    }
+
+    const worlds = [
+      new PropositionalWorld(syntax, interpretation1),
+      new PropositionalWorld(syntax, interpretation2),
+      new PropositionalWorld(syntax, interpretation3)
+    ];
+
+    var cmp = document.querySelector("propositional-world");
+    cmp.syntax = syntax;
+    cmp.interpretation = interpretation;
+
+    var cmp2 = document.querySelector("world-preference");
+    cmp.worlds = worlds;
+  </script>
+</html>

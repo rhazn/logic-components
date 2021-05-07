@@ -1,0 +1,20 @@
+:host {
+    display: block;
+}
+
+.world-selector {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    justify-content: flex-start;
+}
+
+.world-selector__world {
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+.world-selector__world__selected {
+    background-color: lightblue;
+}

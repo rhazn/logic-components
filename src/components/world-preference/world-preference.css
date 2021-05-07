@@ -1,0 +1,22 @@
+:host {
+    display: block;
+}
+.world-preference table {
+    border-collapse: collapse;
+}
+
+.world-preference__rank {
+    border-bottom: 1px solid black;
+}
+
+.world-preference__rank__number {
+    border-right: 1px solid black;
+    padding: 0.5rem;
+    font-weight: 700;
+}
+
+.world-preference__rank__worlds * {
+    display: inline-block;
+    margin: 0.5rem;
+    cursor: pointer;
+}
