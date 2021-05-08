@@ -7,3 +7,6 @@
 ## Description
 
 Framework agnostic components to implement logic tools
+
+## Build locally with react components
+- `npm run build && cd ../logic-components-react && npm run build && cd -`

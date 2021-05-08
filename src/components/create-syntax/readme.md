@@ -12,6 +12,14 @@
 | `syntaxUpdated` |             | `CustomEvent<Set<string>>` |
 
 
+## Shadow Parts
+
+| Part       | Description |
+| ---------- | ----------- |
+| `"button"` |             |
+| `"input"`  |             |
+
+
 ## Dependencies
 
 ### Depends on

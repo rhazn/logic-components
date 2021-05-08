@@ -18,6 +18,7 @@ export class CreateSignature {
         return (
             <Host>
                 <input
+                    part="input"
                     type="range"
                     min="1"
                     max="10"
@@ -26,7 +27,9 @@ export class CreateSignature {
                     onChange={e => this.onChange((e.target as any).value)}
                 />
                 <show-signature signature={this.syntax} />
-                <button onClick={() => this.syntaxUpdated.emit(this.syntax)}>Create</button>
+                <button part="button" onClick={() => this.syntaxUpdated.emit(this.syntax)}>
+                    Create
+                </button>
             </Host>
         );
     }
