@@ -12,7 +12,7 @@ export class ShowSignature {
     render() {
         return (
             <Host>
-                <div>&sum;: {`{${[...this.signature].map(character => `${character}`)}}`}</div>
+                <div>&sum; = {`{${[...this.signature].map(character => `${character}`)}}`}</div>
             </Host>
         );
     }
