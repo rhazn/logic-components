@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property  | Attribute  | Description | Type     | Default |
+| --------- | ---------- | ----------- | -------- | ------- |
+| `maxSize` | `max-size` |             | `number` | `10`    |
+
+
 ## Events
 
 | Event           | Description | Type                       |

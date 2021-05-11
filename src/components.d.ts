@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Interpretation, PropositionalSyntax, PropositionalWorld } from "@rhazn/logic-ts";
 export namespace Components {
     interface CreateSyntax {
+        "maxSize": number;
     }
     interface PropositionalWorldComponent {
         /**
@@ -80,6 +81,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface CreateSyntax {
+        "maxSize"?: number;
         "onSyntaxUpdated"?: (event: CustomEvent<PropositionalSyntax>) => void;
     }
     interface PropositionalWorldComponent {

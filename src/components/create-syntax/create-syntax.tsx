@@ -1,4 +1,4 @@
-import { Component, Host, h, State, EventEmitter, Event } from "@stencil/core";
+import { Component, Host, h, State, EventEmitter, Event, Prop } from "@stencil/core";
 import { PropositionalSyntax } from "@rhazn/logic-ts";
 
 @Component({
@@ -7,6 +7,7 @@ import { PropositionalSyntax } from "@rhazn/logic-ts";
     shadow: true,
 })
 export class CreateSignature {
+    @Prop() maxSize: number = 10;
     @State() syntax: PropositionalSyntax = new Set(["a"]);
     @Event() syntaxUpdated: EventEmitter<PropositionalSyntax>;
 
@@ -21,7 +22,7 @@ export class CreateSignature {
                     part="input"
                     type="range"
                     min="1"
-                    max="10"
+                    max={this.maxSize}
                     value={this.syntax.size}
                     class="slider"
                     onChange={e => this.onChange((e.target as any).value)}
