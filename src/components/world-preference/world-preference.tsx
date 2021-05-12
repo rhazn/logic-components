@@ -50,8 +50,10 @@ export class WorldPreference {
 
         let newRank = 0;
 
-        for (let i = 0; i < (event as any).path.length; i++) {
-            const element = (event as any).path[i] as HTMLElement;
+        const eventPath = (event as any).path || ((event as any).composedPath && (event as any).composedPath());
+
+        for (let i = 0; i < eventPath.length; i++) {
+            const element = eventPath[i] as HTMLElement;
 
             if (element.dataset && element.dataset.rankindex !== undefined) {
                 newRank = +element.dataset.rankindex;
