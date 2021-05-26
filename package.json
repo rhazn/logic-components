@@ -1,6 +1,6 @@
 {
     "name": "@rhazn/logic-components",
-    "version": "0.0.5",
+    "version": "0.1.0",
     "description": "Framework agnostic components to implement logic tools",
     "private": false,
     "main": "dist/index.cjs.js",

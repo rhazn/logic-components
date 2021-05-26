@@ -21,6 +21,7 @@ export const config: Config = {
         reactOutputTarget({
             componentCorePackage: "@rhazn/logic-components",
             proxiesFile: "../logic-components-react/src/components.ts",
+            includeDefineCustomElements: true,
         }),
     ],
 };

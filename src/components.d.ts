@@ -5,10 +5,17 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Interpretation, PropositionalSyntax, PropositionalWorld } from "@rhazn/logic-ts";
+import { Formula, Interpretation, PropositionalSyntax, PropositionalWorld } from "@rhazn/logic-ts";
+import { SyntaxCheckResponse } from "./components/formula-input/formula-input";
 export namespace Components {
     interface CreateSyntax {
         "maxSize": number;
+    }
+    interface FormulaInput {
+        "initialFormula": Formula;
+        "postvalidate": (formula: Formula) => Formula;
+        "prevalidate": (formula: Formula) => Formula;
+        "validate": (formula: Formula) => Promise<SyntaxCheckResponse>;
     }
     interface PropositionalWorldComponent {
         /**
@@ -47,6 +54,12 @@ declare global {
         prototype: HTMLCreateSyntaxElement;
         new (): HTMLCreateSyntaxElement;
     };
+    interface HTMLFormulaInputElement extends Components.FormulaInput, HTMLStencilElement {
+    }
+    var HTMLFormulaInputElement: {
+        prototype: HTMLFormulaInputElement;
+        new (): HTMLFormulaInputElement;
+    };
     interface HTMLPropositionalWorldComponentElement extends Components.PropositionalWorldComponent, HTMLStencilElement {
     }
     var HTMLPropositionalWorldComponentElement: {
@@ -73,6 +86,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "create-syntax": HTMLCreateSyntaxElement;
+        "formula-input": HTMLFormulaInputElement;
         "propositional-world-component": HTMLPropositionalWorldComponentElement;
         "show-signature": HTMLShowSignatureElement;
         "world-preference": HTMLWorldPreferenceElement;
@@ -83,6 +97,13 @@ declare namespace LocalJSX {
     interface CreateSyntax {
         "maxSize"?: number;
         "onSyntaxUpdated"?: (event: CustomEvent<PropositionalSyntax>) => void;
+    }
+    interface FormulaInput {
+        "initialFormula"?: Formula;
+        "onValidFormulaEntered"?: (event: CustomEvent<Formula>) => void;
+        "postvalidate"?: (formula: Formula) => Formula;
+        "prevalidate"?: (formula: Formula) => Formula;
+        "validate"?: (formula: Formula) => Promise<SyntaxCheckResponse>;
     }
     interface PropositionalWorldComponent {
         /**
@@ -118,6 +139,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "create-syntax": CreateSyntax;
+        "formula-input": FormulaInput;
         "propositional-world-component": PropositionalWorldComponent;
         "show-signature": ShowSignature;
         "world-preference": WorldPreference;
@@ -129,6 +151,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "create-syntax": LocalJSX.CreateSyntax & JSXBase.HTMLAttributes<HTMLCreateSyntaxElement>;
+            "formula-input": LocalJSX.FormulaInput & JSXBase.HTMLAttributes<HTMLFormulaInputElement>;
             "propositional-world-component": LocalJSX.PropositionalWorldComponent & JSXBase.HTMLAttributes<HTMLPropositionalWorldComponentElement>;
             "show-signature": LocalJSX.ShowSignature & JSXBase.HTMLAttributes<HTMLShowSignatureElement>;
             "world-preference": LocalJSX.WorldPreference & JSXBase.HTMLAttributes<HTMLWorldPreferenceElement>;
