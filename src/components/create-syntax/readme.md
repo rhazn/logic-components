@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event           | Description | Type                       |
-| --------------- | ----------- | -------------------------- |
-| `syntaxUpdated` |             | `CustomEvent<Set<string>>` |
+| Event           | Description | Type                                      |
+| --------------- | ----------- | ----------------------------------------- |
+| `syntaxUpdated` |             | `CustomEvent<Set<PropositionalVariable>>` |
 
 
 ## Shadow Parts

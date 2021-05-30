@@ -7,17 +7,17 @@
 
 ## Properties
 
-| Property         | Attribute | Description             | Type                     | Default |
-| ---------------- | --------- | ----------------------- | ------------------------ | ------- |
-| `allowEmptyRows` | --        | Allow empty rows or not | `Boolean`                | `false` |
-| `preference`     | --        | Preference over worlds  | `PropositionalWorld[][]` | `[]`    |
+| Property         | Attribute | Description             | Type              | Default                   |
+| ---------------- | --------- | ----------------------- | ----------------- | ------------------------- |
+| `allowEmptyRows` | --        | Allow empty rows or not | `Boolean`         | `false`                   |
+| `preference`     | --        | Preference over worlds  | `WorldPreference` | `new WorldPreference([])` |
 
 
 ## Events
 
-| Event               | Description | Type                                  |
-| ------------------- | ----------- | ------------------------------------- |
-| `preferenceChanged` |             | `CustomEvent<PropositionalWorld[][]>` |
+| Event               | Description | Type                           |
+| ------------------- | ----------- | ------------------------------ |
+| `preferenceChanged` |             | `CustomEvent<WorldPreference>` |
 
 
 ## Dependencies
@@ -29,8 +29,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  world-preference --> propositional-world-component
-  style world-preference fill:#f9f,stroke:#333,stroke-width:4px
+  world-preference-component --> propositional-world-component
+  style world-preference-component fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

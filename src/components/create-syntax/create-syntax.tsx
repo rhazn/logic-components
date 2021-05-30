@@ -1,5 +1,5 @@
 import { Component, Host, h, State, EventEmitter, Event, Prop } from "@stencil/core";
-import { PropositionalSyntax } from "@rhazn/logic-ts";
+import { PropositionalSyntax, PropositionalVariable } from "@rhazn/logic-ts";
 
 @Component({
     tag: "create-syntax",
@@ -12,7 +12,7 @@ export class CreateSignature {
     @Event() syntaxUpdated: EventEmitter<PropositionalSyntax>;
 
     onChange(size: number) {
-        this.syntax = new Set("abcdefghijklmnopqrstuvwxyz".substr(0, size).split(""));
+        this.syntax = new Set("abcdefghijklmnopqrstuvwxyz".substr(0, size).split("")) as Set<PropositionalVariable>;
     }
 
     render() {

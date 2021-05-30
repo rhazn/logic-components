@@ -1,12 +1,13 @@
 import { Component, Host, h, Prop, State, Watch, Event, EventEmitter } from "@stencil/core";
 import { PropositionalWorld } from "@rhazn/logic-ts";
+import { WorldPreference } from "@rhazn/logic-ts/dist/logic/WorldPreference";
 
 @Component({
-    tag: "world-preference",
+    tag: "world-preference-component",
     styleUrl: "world-preference.css",
     shadow: true,
 })
-export class WorldPreference {
+export class WorldPreferenceComponent {
     /**
      * Allow empty rows or not
      */
@@ -15,11 +16,11 @@ export class WorldPreference {
     /**
      * Preference over worlds
      */
-    @Prop() preference: PropositionalWorld[][] = [];
+    @Prop() preference: WorldPreference = new WorldPreference([]);
 
-    @State() internalPreference: PropositionalWorld[][] = [];
+    @State() internalPreference: WorldPreference = new WorldPreference([]);
 
-    @Event() preferenceChanged: EventEmitter<PropositionalWorld[][]>;
+    @Event() preferenceChanged: EventEmitter<WorldPreference>;
 
     draggedWorld: { rankIndex: number; worldIndex: number };
 
@@ -42,9 +43,9 @@ export class WorldPreference {
         const oldRank = this.draggedWorld.rankIndex;
         const oldIndex = this.draggedWorld.worldIndex;
 
-        const world = this.internalPreference[oldRank][oldIndex];
+        const world = this.internalPreference.data[oldRank][oldIndex];
 
-        const newPreference = [...this.internalPreference];
+        const newPreference = [...this.internalPreference.data];
 
         newPreference[oldRank] = newPreference[oldRank].filter((_, index) => index !== oldIndex);
 
@@ -63,22 +64,22 @@ export class WorldPreference {
 
         newPreference[newRank] = [...newPreference[newRank], world];
 
-        this.internalPreference = this.manageEmptyRows(newPreference);
+        this.internalPreference = new WorldPreference(this.manageEmptyRows(newPreference));
 
         this.emitChange();
     }
 
     @Watch("preference")
-    updateInternalPreference(newPreference: PropositionalWorld[][]) {
-        this.internalPreference = this.manageEmptyRows(newPreference);
+    updateInternalPreference(newPreference: WorldPreference) {
+        this.internalPreference = new WorldPreference(this.manageEmptyRows(newPreference.data));
     }
 
     componentWillLoad() {
         this.updateInternalPreference(this.preference);
     }
 
-    private manageEmptyRows(preference: PropositionalWorld[][]): PropositionalWorld[][] {
-        if (preference.length === 0) {
+    private manageEmptyRows(preference: PropositionalWorld[][] | undefined): PropositionalWorld[][] {
+        if (preference === undefined || preference.length === 0) {
             return this.allowEmptyRows ? [[], []] : [[]];
         }
 
@@ -114,7 +115,12 @@ export class WorldPreference {
 
     private emitChange() {
         this.preferenceChanged.emit(
-            this.internalPreference.slice(0, this.internalPreference.length - (this.allowEmptyRows ? 2 : 1)),
+            new WorldPreference(
+                this.internalPreference.data.slice(
+                    0,
+                    this.internalPreference.data.length - (this.allowEmptyRows ? 2 : 1),
+                ),
+            ),
         );
     }
 
@@ -123,11 +129,11 @@ export class WorldPreference {
             <Host>
                 <div class="world-preference">
                     <table>
-                        {this.internalPreference
+                        {this.internalPreference.data
                             .slice()
                             .reverse()
                             .map((rank, index) => {
-                                const rankIndex = this.internalPreference.length - 1 - index;
+                                const rankIndex = this.internalPreference.data.length - 1 - index;
                                 return (
                                     <tr
                                         class="world-preference__rank"
@@ -143,8 +149,7 @@ export class WorldPreference {
                                                     data-index={worldIndex}
                                                     draggable={true}
                                                     onDragStart={e => this.dragStartHandler(e)}
-                                                    syntax={world.syntax}
-                                                    interpretation={world.interpretation}
+                                                    world={world}
                                                 />
                                             ))}
                                         </td>

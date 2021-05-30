@@ -5,8 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Formula, Interpretation, PropositionalSyntax, PropositionalWorld } from "@rhazn/logic-ts";
+import { Formula, PropositionalSyntax, PropositionalWorld } from "@rhazn/logic-ts";
 import { SyntaxCheckResponse } from "./components/formula-input/formula-input";
+import { WorldPreference } from "@rhazn/logic-ts/dist/logic/WorldPreference";
 export namespace Components {
     interface CreateSyntax {
         "maxSize": number;
@@ -19,18 +20,14 @@ export namespace Components {
     }
     interface PropositionalWorldComponent {
         /**
-          * Interpretation for the world
+          * Propositional world
          */
-        "interpretation": Interpretation;
-        /**
-          * Propositional Syntax for the world
-         */
-        "syntax": PropositionalSyntax;
+        "world": PropositionalWorld;
     }
     interface ShowSignature {
         "signature": PropositionalSyntax;
     }
-    interface WorldPreference {
+    interface WorldPreferenceComponent {
         /**
           * Allow empty rows or not
          */
@@ -38,7 +35,7 @@ export namespace Components {
         /**
           * Preference over worlds
          */
-        "preference": PropositionalWorld[][];
+        "preference": WorldPreference;
     }
     interface WorldSelector {
         /**
@@ -72,11 +69,11 @@ declare global {
         prototype: HTMLShowSignatureElement;
         new (): HTMLShowSignatureElement;
     };
-    interface HTMLWorldPreferenceElement extends Components.WorldPreference, HTMLStencilElement {
+    interface HTMLWorldPreferenceComponentElement extends Components.WorldPreferenceComponent, HTMLStencilElement {
     }
-    var HTMLWorldPreferenceElement: {
-        prototype: HTMLWorldPreferenceElement;
-        new (): HTMLWorldPreferenceElement;
+    var HTMLWorldPreferenceComponentElement: {
+        prototype: HTMLWorldPreferenceComponentElement;
+        new (): HTMLWorldPreferenceComponentElement;
     };
     interface HTMLWorldSelectorElement extends Components.WorldSelector, HTMLStencilElement {
     }
@@ -89,7 +86,7 @@ declare global {
         "formula-input": HTMLFormulaInputElement;
         "propositional-world-component": HTMLPropositionalWorldComponentElement;
         "show-signature": HTMLShowSignatureElement;
-        "world-preference": HTMLWorldPreferenceElement;
+        "world-preference-component": HTMLWorldPreferenceComponentElement;
         "world-selector": HTMLWorldSelectorElement;
     }
 }
@@ -107,27 +104,23 @@ declare namespace LocalJSX {
     }
     interface PropositionalWorldComponent {
         /**
-          * Interpretation for the world
+          * Propositional world
          */
-        "interpretation"?: Interpretation;
-        /**
-          * Propositional Syntax for the world
-         */
-        "syntax"?: PropositionalSyntax;
+        "world"?: PropositionalWorld;
     }
     interface ShowSignature {
         "signature"?: PropositionalSyntax;
     }
-    interface WorldPreference {
+    interface WorldPreferenceComponent {
         /**
           * Allow empty rows or not
          */
         "allowEmptyRows"?: Boolean;
-        "onPreferenceChanged"?: (event: CustomEvent<PropositionalWorld[][]>) => void;
+        "onPreferenceChanged"?: (event: CustomEvent<WorldPreference>) => void;
         /**
           * Preference over worlds
          */
-        "preference"?: PropositionalWorld[][];
+        "preference"?: WorldPreference;
     }
     interface WorldSelector {
         "onWorldDeselected"?: (event: CustomEvent<PropositionalWorld>) => void;
@@ -142,7 +135,7 @@ declare namespace LocalJSX {
         "formula-input": FormulaInput;
         "propositional-world-component": PropositionalWorldComponent;
         "show-signature": ShowSignature;
-        "world-preference": WorldPreference;
+        "world-preference-component": WorldPreferenceComponent;
         "world-selector": WorldSelector;
     }
 }
@@ -154,7 +147,7 @@ declare module "@stencil/core" {
             "formula-input": LocalJSX.FormulaInput & JSXBase.HTMLAttributes<HTMLFormulaInputElement>;
             "propositional-world-component": LocalJSX.PropositionalWorldComponent & JSXBase.HTMLAttributes<HTMLPropositionalWorldComponentElement>;
             "show-signature": LocalJSX.ShowSignature & JSXBase.HTMLAttributes<HTMLShowSignatureElement>;
-            "world-preference": LocalJSX.WorldPreference & JSXBase.HTMLAttributes<HTMLWorldPreferenceElement>;
+            "world-preference-component": LocalJSX.WorldPreferenceComponent & JSXBase.HTMLAttributes<HTMLWorldPreferenceComponentElement>;
             "world-selector": LocalJSX.WorldSelector & JSXBase.HTMLAttributes<HTMLWorldSelectorElement>;
         }
     }

@@ -1,8 +1,12 @@
 {
     "name": "@rhazn/logic-components",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Framework agnostic components to implement logic tools",
     "private": false,
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:rhazn/logic-components.git"
+    },
     "main": "dist/index.cjs.js",
     "module": "dist/custom-elements/index.js",
     "es2015": "dist/esm/index.mjs",
@@ -23,7 +27,7 @@
         "generate": "stencil generate"
     },
     "dependencies": {
-        "@rhazn/logic-ts": "0.0.1",
+        "@rhazn/logic-ts": "0.1.2",
         "@stencil/core": "^2.0.1"
     },
     "license": "MIT",

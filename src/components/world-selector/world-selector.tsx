@@ -47,8 +47,7 @@ export class WorldSelector {
                                     ? this.handleWorldDeselected(index)
                                     : this.handleWorldSelected(index)
                             }
-                            syntax={world.syntax}
-                            interpretation={world.interpretation}
+                            world={world}
                         />
                     ))}
                 </div>

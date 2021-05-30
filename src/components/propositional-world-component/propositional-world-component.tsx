@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop } from "@stencil/core";
-import { Interpretation, PropositionalSyntax } from "@rhazn/logic-ts";
+import { PropositionalWorld } from "@rhazn/logic-ts";
 
 @Component({
     tag: "propositional-world-component",
@@ -8,21 +8,16 @@ import { Interpretation, PropositionalSyntax } from "@rhazn/logic-ts";
 })
 export class PropositionalWorldComponent {
     /**
-     * Propositional Syntax for the world
+     * Propositional world
      */
-    @Prop() syntax: PropositionalSyntax;
-
-    /**
-     * Interpretation for the world
-     */
-    @Prop() interpretation: Interpretation;
+    @Prop() world: PropositionalWorld;
 
     render() {
         return (
             <Host>
                 <div class="propositional-world-component">
-                    {[...this.syntax].map(variable => (
-                        <span class={this.interpretation(variable) ? "variable-true" : "variable-false"}>
+                    {[...this.world.syntax].map(variable => (
+                        <span class={this.world.assignment.has(variable) ? "variable-true" : "variable-false"}>
                             {variable}
                         </span>
                     ))}

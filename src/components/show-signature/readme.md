@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property    | Attribute | Description | Type          | Default     |
-| ----------- | --------- | ----------- | ------------- | ----------- |
-| `signature` | --        |             | `Set<string>` | `undefined` |
+| Property    | Attribute | Description | Type                         | Default     |
+| ----------- | --------- | ----------- | ---------------------------- | ----------- |
+| `signature` | --        |             | `Set<PropositionalVariable>` | `undefined` |
 
 
 ## Dependencies
