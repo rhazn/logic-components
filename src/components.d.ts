@@ -5,9 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Formula, PropositionalSignature, PropositionalWorld } from "@rhazn/logic-ts";
+import { Formula, PropositionalSignature, PropositionalWorld, WorldPreference } from "@rhazn/logic-ts";
 import { SyntaxCheckResponse } from "./components/formula-input/formula-input";
-import { WorldPreference } from "@rhazn/logic-ts/dist/logic/WorldPreference";
 export namespace Components {
     interface CreateSignature {
         "maxSize": number;

@@ -1,9 +1,6 @@
 {
     "name": "@rhazn/logic-components",
     "version": "0.3.0",
-    "workspaces": [
-        "../logic-ts"
-    ],
     "description": "Framework agnostic components to implement logic tools",
     "private": false,
     "repository": {

@@ -1,6 +1,5 @@
 import { Component, Host, h, Prop, State, Watch, Event, EventEmitter } from "@stencil/core";
-import { PropositionalWorld } from "@rhazn/logic-ts";
-import { WorldPreference } from "@rhazn/logic-ts/dist/logic/WorldPreference";
+import { PropositionalWorld, WorldPreference } from "@rhazn/logic-ts";
 
 @Component({
     tag: "world-preference-component",
