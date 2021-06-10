@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop } from "@stencil/core";
-import { PropositionalSyntax } from "@rhazn/logic-ts";
+import { PropositionalSignature } from "@rhazn/logic-ts";
 
 @Component({
     tag: "show-signature",
@@ -7,7 +7,7 @@ import { PropositionalSyntax } from "@rhazn/logic-ts";
     shadow: true,
 })
 export class ShowSignature {
-    @Prop() signature: PropositionalSyntax;
+    @Prop() signature: PropositionalSignature;
 
     render() {
         return (

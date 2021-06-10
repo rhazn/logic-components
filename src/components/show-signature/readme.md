@@ -16,12 +16,12 @@
 
 ### Used by
 
- - [create-syntax](../create-syntax)
+ - [create-signature](../create-syntax)
 
 ### Graph
 ```mermaid
 graph TD;
-  create-syntax --> show-signature
+  create-signature --> show-signature
   style show-signature fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

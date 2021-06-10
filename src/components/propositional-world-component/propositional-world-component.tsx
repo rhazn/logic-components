@@ -16,7 +16,7 @@ export class PropositionalWorldComponent {
         return (
             <Host>
                 <div class="propositional-world-component">
-                    {[...this.world.syntax].map(variable => (
+                    {[...this.world.signature].map(variable => (
                         <span class={this.world.assignment.has(variable) ? "variable-true" : "variable-false"}>
                             {variable}
                         </span>

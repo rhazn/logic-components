@@ -5,11 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Formula, PropositionalSyntax, PropositionalWorld } from "@rhazn/logic-ts";
+import { Formula, PropositionalSignature, PropositionalWorld } from "@rhazn/logic-ts";
 import { SyntaxCheckResponse } from "./components/formula-input/formula-input";
 import { WorldPreference } from "@rhazn/logic-ts/dist/logic/WorldPreference";
 export namespace Components {
-    interface CreateSyntax {
+    interface CreateSignature {
         "maxSize": number;
     }
     interface FormulaInput {
@@ -25,7 +25,7 @@ export namespace Components {
         "world": PropositionalWorld;
     }
     interface ShowSignature {
-        "signature": PropositionalSyntax;
+        "signature": PropositionalSignature;
     }
     interface WorldPreferenceComponent {
         /**
@@ -45,11 +45,11 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLCreateSyntaxElement extends Components.CreateSyntax, HTMLStencilElement {
+    interface HTMLCreateSignatureElement extends Components.CreateSignature, HTMLStencilElement {
     }
-    var HTMLCreateSyntaxElement: {
-        prototype: HTMLCreateSyntaxElement;
-        new (): HTMLCreateSyntaxElement;
+    var HTMLCreateSignatureElement: {
+        prototype: HTMLCreateSignatureElement;
+        new (): HTMLCreateSignatureElement;
     };
     interface HTMLFormulaInputElement extends Components.FormulaInput, HTMLStencilElement {
     }
@@ -82,7 +82,7 @@ declare global {
         new (): HTMLWorldSelectorElement;
     };
     interface HTMLElementTagNameMap {
-        "create-syntax": HTMLCreateSyntaxElement;
+        "create-signature": HTMLCreateSignatureElement;
         "formula-input": HTMLFormulaInputElement;
         "propositional-world-component": HTMLPropositionalWorldComponentElement;
         "show-signature": HTMLShowSignatureElement;
@@ -91,9 +91,9 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface CreateSyntax {
+    interface CreateSignature {
         "maxSize"?: number;
-        "onSyntaxUpdated"?: (event: CustomEvent<PropositionalSyntax>) => void;
+        "onSignatureUpdated"?: (event: CustomEvent<PropositionalSignature>) => void;
     }
     interface FormulaInput {
         "initialFormula"?: Formula;
@@ -109,7 +109,7 @@ declare namespace LocalJSX {
         "world"?: PropositionalWorld;
     }
     interface ShowSignature {
-        "signature"?: PropositionalSyntax;
+        "signature"?: PropositionalSignature;
     }
     interface WorldPreferenceComponent {
         /**
@@ -131,7 +131,7 @@ declare namespace LocalJSX {
         "worlds"?: PropositionalWorld[];
     }
     interface IntrinsicElements {
-        "create-syntax": CreateSyntax;
+        "create-signature": CreateSignature;
         "formula-input": FormulaInput;
         "propositional-world-component": PropositionalWorldComponent;
         "show-signature": ShowSignature;
@@ -143,7 +143,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "create-syntax": LocalJSX.CreateSyntax & JSXBase.HTMLAttributes<HTMLCreateSyntaxElement>;
+            "create-signature": LocalJSX.CreateSignature & JSXBase.HTMLAttributes<HTMLCreateSignatureElement>;
             "formula-input": LocalJSX.FormulaInput & JSXBase.HTMLAttributes<HTMLFormulaInputElement>;
             "propositional-world-component": LocalJSX.PropositionalWorldComponent & JSXBase.HTMLAttributes<HTMLPropositionalWorldComponentElement>;
             "show-signature": LocalJSX.ShowSignature & JSXBase.HTMLAttributes<HTMLShowSignatureElement>;

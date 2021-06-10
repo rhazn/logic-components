@@ -1,18 +1,18 @@
 import { Component, Host, h, State, EventEmitter, Event, Prop } from "@stencil/core";
-import { PropositionalSyntax, PropositionalVariable } from "@rhazn/logic-ts";
+import { PropositionalSignature, PropositionalVariable } from "@rhazn/logic-ts";
 
 @Component({
-    tag: "create-syntax",
-    styleUrl: "create-syntax.css",
+    tag: "create-signature",
+    styleUrl: "create-signature.css",
     shadow: true,
 })
 export class CreateSignature {
     @Prop() maxSize: number = 10;
-    @State() syntax: PropositionalSyntax = new Set(["a"]);
-    @Event() syntaxUpdated: EventEmitter<PropositionalSyntax>;
+    @State() signature: PropositionalSignature = new Set(["a"]);
+    @Event() signatureUpdated: EventEmitter<PropositionalSignature>;
 
     onChange(size: number) {
-        this.syntax = new Set("abcdefghijklmnopqrstuvwxyz".substr(0, size).split("")) as Set<PropositionalVariable>;
+        this.signature = new Set("abcdefghijklmnopqrstuvwxyz".substr(0, size).split("")) as Set<PropositionalVariable>;
     }
 
     render() {
@@ -23,12 +23,12 @@ export class CreateSignature {
                     type="range"
                     min="1"
                     max={this.maxSize}
-                    value={this.syntax.size}
+                    value={this.signature.size}
                     class="slider"
                     onChange={e => this.onChange((e.target as any).value)}
                 />
-                <show-signature signature={this.syntax} />
-                <button part="button" onClick={() => this.syntaxUpdated.emit(this.syntax)}>
+                <show-signature signature={this.signature} />
+                <button part="button" onClick={() => this.signatureUpdated.emit(this.signature)}>
                     Create
                 </button>
             </Host>

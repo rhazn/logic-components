@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event           | Description | Type                                      |
-| --------------- | ----------- | ----------------------------------------- |
-| `syntaxUpdated` |             | `CustomEvent<Set<PropositionalVariable>>` |
+| Event              | Description | Type                                      |
+| ------------------ | ----------- | ----------------------------------------- |
+| `signatureUpdated` |             | `CustomEvent<Set<PropositionalVariable>>` |
 
 
 ## Shadow Parts
@@ -36,8 +36,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  create-syntax --> show-signature
-  style create-syntax fill:#f9f,stroke:#333,stroke-width:4px
+  create-signature --> show-signature
+  style create-signature fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
