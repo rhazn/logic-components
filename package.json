@@ -1,6 +1,6 @@
 {
     "name": "@rhazn/logic-components",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "Framework agnostic components to implement logic tools",
     "private": false,
     "repository": {
@@ -27,7 +27,7 @@
         "generate": "stencil generate"
     },
     "dependencies": {
-        "@rhazn/logic-ts": "0.4.0",
+        "@rhazn/logic-ts": "0.4.1",
         "@stencil/core": "^2.0.1"
     },
     "license": "MIT",

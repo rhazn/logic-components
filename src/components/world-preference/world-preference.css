@@ -20,3 +20,8 @@
     margin: 0.5rem;
     cursor: pointer;
 }
+
+.world-preference__rank__worlds_fixed * {
+    display: inline-block;
+    margin: 0.5rem;
+}

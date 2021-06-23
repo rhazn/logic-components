@@ -9,6 +9,7 @@
 
 | Property         | Attribute | Description             | Type              | Default                   |
 | ---------------- | --------- | ----------------------- | ----------------- | ------------------------- |
+| `allowChanges`   | --        | Allow changes or not    | `Boolean`         | `true`                    |
 | `allowEmptyRows` | --        | Allow empty rows or not | `Boolean`         | `false`                   |
 | `preference`     | --        | Preference over worlds  | `WorldPreference` | `new WorldPreference([])` |
 

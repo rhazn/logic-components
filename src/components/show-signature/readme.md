@@ -16,7 +16,7 @@
 
 ### Used by
 
- - [create-signature](../create-syntax)
+ - [create-signature](../create-signature)
 
 ### Graph
 ```mermaid

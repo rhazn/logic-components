@@ -13,6 +13,11 @@ export class WorldPreferenceComponent {
     @Prop() allowEmptyRows: Boolean = false;
 
     /**
+     * Allow changes or not
+     */
+    @Prop() allowChanges: Boolean = true;
+
+    /**
      * Preference over worlds
      */
     @Prop() preference: WorldPreference = new WorldPreference([]);
@@ -24,6 +29,10 @@ export class WorldPreferenceComponent {
     draggedWorld: { rankIndex: number; worldIndex: number };
 
     dragStartHandler(event: DragEvent) {
+        if (!this.allowChanges) {
+            return;
+        }
+
         this.draggedWorld = {
             rankIndex: +(event.target as HTMLElement).dataset.rank,
             worldIndex: +(event.target as HTMLElement).dataset.index,
@@ -31,11 +40,19 @@ export class WorldPreferenceComponent {
     }
 
     dragOverHandler(event: DragEvent) {
+        if (!this.allowChanges) {
+            return;
+        }
+
         event.preventDefault();
         event.stopPropagation();
     }
 
     dragDropHandler(event: DragEvent) {
+        if (!this.allowChanges) {
+            return;
+        }
+
         event.preventDefault();
         event.stopPropagation();
 
@@ -141,7 +158,13 @@ export class WorldPreferenceComponent {
                                         onDrop={e => this.dragDropHandler(e)}
                                     >
                                         <td class="world-preference__rank__number">{rankIndex}</td>
-                                        <td class="world-preference__rank__worlds">
+                                        <td
+                                            class={
+                                                this.allowChanges
+                                                    ? "world-preference__rank__worlds"
+                                                    : "preference__rank__worlds_fixed"
+                                            }
+                                        >
                                             {rank.map((world, worldIndex) => (
                                                 <propositional-world-component
                                                     data-rank={rankIndex}

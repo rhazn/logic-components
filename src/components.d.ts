@@ -28,6 +28,10 @@ export namespace Components {
     }
     interface WorldPreferenceComponent {
         /**
+          * Allow changes or not
+         */
+        "allowChanges": Boolean;
+        /**
           * Allow empty rows or not
          */
         "allowEmptyRows": Boolean;
@@ -111,6 +115,10 @@ declare namespace LocalJSX {
         "signature"?: PropositionalSignature;
     }
     interface WorldPreferenceComponent {
+        /**
+          * Allow changes or not
+         */
+        "allowChanges"?: Boolean;
         /**
           * Allow empty rows or not
          */
