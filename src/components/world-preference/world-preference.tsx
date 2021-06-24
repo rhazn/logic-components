@@ -10,12 +10,12 @@ export class WorldPreferenceComponent {
     /**
      * Allow empty rows or not
      */
-    @Prop() allowEmptyRows: Boolean = false;
+    @Prop() allowEmptyRows: boolean = false;
 
     /**
      * Allow changes or not
      */
-    @Prop() allowChanges: Boolean = true;
+    @Prop() allowChanges: boolean = true;
 
     /**
      * Preference over worlds
@@ -162,14 +162,14 @@ export class WorldPreferenceComponent {
                                             class={
                                                 this.allowChanges
                                                     ? "world-preference__rank__worlds"
-                                                    : "preference__rank__worlds_fixed"
+                                                    : "world-preference__rank__worlds_fixed"
                                             }
                                         >
                                             {rank.map((world, worldIndex) => (
                                                 <propositional-world-component
                                                     data-rank={rankIndex}
                                                     data-index={worldIndex}
-                                                    draggable={true}
+                                                    draggable={this.allowChanges}
                                                     onDragStart={e => this.dragStartHandler(e)}
                                                     world={world}
                                                 />

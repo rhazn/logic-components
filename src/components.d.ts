@@ -30,11 +30,11 @@ export namespace Components {
         /**
           * Allow changes or not
          */
-        "allowChanges": Boolean;
+        "allowChanges": boolean;
         /**
           * Allow empty rows or not
          */
-        "allowEmptyRows": Boolean;
+        "allowEmptyRows": boolean;
         /**
           * Preference over worlds
          */
@@ -118,11 +118,11 @@ declare namespace LocalJSX {
         /**
           * Allow changes or not
          */
-        "allowChanges"?: Boolean;
+        "allowChanges"?: boolean;
         /**
           * Allow empty rows or not
          */
-        "allowEmptyRows"?: Boolean;
+        "allowEmptyRows"?: boolean;
         "onPreferenceChanged"?: (event: CustomEvent<WorldPreference>) => void;
         /**
           * Preference over worlds
