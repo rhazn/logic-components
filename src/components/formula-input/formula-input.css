@@ -7,10 +7,6 @@
     flex-direction: column;
 }
 
-label {
-    font-weight: bold;
-}
-
 .error {
     color: red;
     padding: 0.5rem 0;

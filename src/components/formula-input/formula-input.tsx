@@ -54,6 +54,11 @@ export class FormulaInput {
         this.validFormulaEntered.emit(newValue);
     }
 
+    @Watch("initialFormula")
+    watchInitialFormulaHandler(newValue: Formula) {
+        this.formula = newValue;
+    }
+
     private updateFormula(formula: Formula) {
         this.formula = formula;
     }
@@ -62,9 +67,11 @@ export class FormulaInput {
         return (
             <Host>
                 <form class="form" part="form" noValidate autoComplete="off">
-                    <label htmlFor="formula-input" part="label">
-                        Formula
-                    </label>
+                    <slot name="label">
+                        <label htmlFor="formula-input" part="label">
+                            Formula
+                        </label>
+                    </slot>
                     <div class="description" part="description">
                         <slot name="description">
                             Formula in TPTP syntax (
