@@ -12,6 +12,13 @@
 | `signature` | --        |             | `Set<PropositionalVariable>` | `undefined` |
 
 
+## Shadow Parts
+
+| Part          | Description |
+| ------------- | ----------- |
+| `"signature"` |             |
+
+
 ## Dependencies
 
 ### Used by
