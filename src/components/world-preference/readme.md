@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property         | Attribute          | Description             | Type              | Default                   |
-| ---------------- | ------------------ | ----------------------- | ----------------- | ------------------------- |
-| `allowChanges`   | `allow-changes`    | Allow changes or not    | `boolean`         | `true`                    |
-| `allowEmptyRows` | `allow-empty-rows` | Allow empty rows or not | `boolean`         | `false`                   |
-| `preference`     | --                 | Preference over worlds  | `WorldPreference` | `new WorldPreference([])` |
+| Property         | Attribute          | Description             | Type              | Default                              |
+| ---------------- | ------------------ | ----------------------- | ----------------- | ------------------------------------ |
+| `allowChanges`   | `allow-changes`    | Allow changes or not    | `boolean`         | `true`                               |
+| `allowEmptyRows` | `allow-empty-rows` | Allow empty rows or not | `boolean`         | `false`                              |
+| `preference`     | --                 | Preference over worlds  | `WorldPreference` | `new WorldPreference(new Set(), [])` |
 
 
 ## Events

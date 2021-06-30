@@ -20,9 +20,9 @@ export class WorldPreferenceComponent {
     /**
      * Preference over worlds
      */
-    @Prop() preference: WorldPreference = new WorldPreference([]);
+    @Prop() preference: WorldPreference = new WorldPreference(new Set(), []);
 
-    @State() internalPreference: WorldPreference = new WorldPreference([]);
+    @State() internalPreference: WorldPreference = new WorldPreference(new Set(), []);
 
     @Event() preferenceChanged: EventEmitter<WorldPreference>;
 
@@ -80,14 +80,20 @@ export class WorldPreferenceComponent {
 
         newPreference[newRank] = [...newPreference[newRank], world];
 
-        this.internalPreference = new WorldPreference(this.manageEmptyRows(newPreference));
+        this.internalPreference = new WorldPreference(
+            this.internalPreference.signature,
+            this.manageEmptyRows(newPreference),
+        );
 
         this.emitChange();
     }
 
     @Watch("preference")
     updateInternalPreference(newPreference: WorldPreference) {
-        this.internalPreference = new WorldPreference(this.manageEmptyRows(newPreference.data));
+        this.internalPreference = new WorldPreference(
+            newPreference.signature,
+            this.manageEmptyRows(newPreference.data),
+        );
     }
 
     componentWillLoad() {
@@ -132,6 +138,7 @@ export class WorldPreferenceComponent {
     private emitChange() {
         this.preferenceChanged.emit(
             new WorldPreference(
+                this.internalPreference.signature,
                 this.internalPreference.data.slice(
                     0,
                     this.internalPreference.data.length - (this.allowEmptyRows ? 2 : 1),
